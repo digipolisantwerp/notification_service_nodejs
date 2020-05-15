@@ -1,5 +1,4 @@
 # Notification Widget UI BFF (NodeJS)
-# Contact Picker Smart Widget BFF (Node)
 
 This is a Node.js backend service library to create a BFF service for the Notification Widget. The widget provides a notification. This service is matched by a [corresponding UI](https://github.com/digitalrmdy/notification_widget_angular).
 
