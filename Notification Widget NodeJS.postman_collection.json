@@ -1,0 +1,244 @@
+{
+	"info": {
+		"_postman_id": "9ac99d3e-8313-4e89-95a2-85ca8a117cf7",
+		"name": "Notification Widget NodeJS",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Status",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:{{port}}/status",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "{{port}}",
+					"path": [
+						"status"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Notifications unread Count",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:{{port}}/api/v1/notifications/overview?auth={{authToken}}&userId={{userId}}",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "{{port}}",
+					"path": [
+						"api",
+						"v1",
+						"notifications",
+						"overview"
+					],
+					"query": [
+						{
+							"key": "auth",
+							"value": "{{authToken}}"
+						},
+						{
+							"key": "userId",
+							"value": "{{userId}}"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Notifications List",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:{{port}}/api/v1/notifications?sort=-createdAt&page=1&auth={{authToken}}&userId={{userId}}",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "{{port}}",
+					"path": [
+						"api",
+						"v1",
+						"notifications"
+					],
+					"query": [
+						{
+							"key": "sort",
+							"value": "-createdAt"
+						},
+						{
+							"key": "page",
+							"value": "1"
+						},
+						{
+							"key": "auth",
+							"value": "{{authToken}}"
+						},
+						{
+							"key": "userId",
+							"value": "{{userId}}"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Notification - Mark as read",
+			"request": {
+				"method": "PATCH",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\"status\":\"read\"}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:{{port}}/api/v1/notifications/5ea1182cb6f9b100218dc1d2?auth={{authToken}}",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "{{port}}",
+					"path": [
+						"api",
+						"v1",
+						"notifications",
+						"5ea1182cb6f9b100218dc1d2"
+					],
+					"query": [
+						{
+							"key": "auth",
+							"value": "{{authToken}}"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Notification - Marl as unread",
+			"request": {
+				"method": "PATCH",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\"status\":\"unread\"}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:{{port}}/api/v1/notifications/5ea1182cb6f9b100218dc1d2?auth={{authToken}}",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "{{port}}",
+					"path": [
+						"api",
+						"v1",
+						"notifications",
+						"5ea1182cb6f9b100218dc1d2"
+					],
+					"query": [
+						{
+							"key": "auth",
+							"value": "{{authToken}}"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Notification - Delete",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:{{port}}/api/v1/notifications/5e9ee8bf958d2c02c69a45fb?auth={{authToken}}",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "{{port}}",
+					"path": [
+						"api",
+						"v1",
+						"notifications",
+						"5e9ee8bf958d2c02c69a45fb"
+					],
+					"query": [
+						{
+							"key": "auth",
+							"value": "{{authToken}}"
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"id": "60d5a7a1-36f3-4e5e-886d-c41f50950070",
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"id": "f4993551-91ec-49ba-b498-f514f1465fe9",
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"id": "123134c1-f285-4435-bbb6-2ba96336db88",
+			"key": "authToken",
+			"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE1ODk5ODM1ODcsImFEYXRhIjoiYTUwNDk3MjQ3Y2RjZTU1NWIyOTQ4OGUxNTg3NDdiNTBmNjc0ZmRmZGMwNTdkZGU2MDk5ZmU0ODk2NjMyYTNjNmQ2MzA4ZGUzYjVjOTczNzFmZThiNWQ3MWExZDFiNWVhIiwickRhdGEiOiJiYWQwYzY3OTg3YzY2MmQ4MmNlMjA3NjJlYWM0NGE5ODI3ODZhNjBjYWJiNTc2M2ZjMTZhMDZjN2ZkM2RhYWQyODNhZDIzMWYwOTYyZmMxZTI2ZTlhZWY3NzU1OTRlZDUiLCJpZCI6Ijc4NThjMGM1LThlOWMtNGM2Yi1iOTIwLTQyYTdlMDMxZDM3OSIsIm5hbWUiOiJFWDAzNDgxIiwiZ2l2ZW5uYW1lIjoiTWljaGllbCIsInN1cm5hbWUiOiJHZWxseW5jayIsImZ1bGxuYW1lIjoiTWljaGllbCBHZWxseW5jayIsImlhdCI6MTU4OTk3NjM4N30.gfzpuBntwiquRkpmka9igYtRviYaLFd-4LMn5iWUw1U",
+			"type": "string"
+		},
+		{
+			"id": "3ce6f72a-d226-4549-9f17-01314c8832e8",
+			"key": "userId",
+			"value": "7858c0c5-8e9c-4c6b-b920-42a7e031d379",
+			"type": "string"
+		},
+		{
+			"id": "81e84451-3a2d-4601-a286-e7717ee8339f",
+			"key": "port",
+			"value": "3002",
+			"type": "string"
+		}
+	],
+	"protocolProfileBehavior": {}
+}

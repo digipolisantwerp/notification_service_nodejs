@@ -23,10 +23,11 @@ Express example:
 const express = require('express');
 const app = express()
 const router = express.Router();
-...
-require('@acpaas-ui-widgets/nodejs-notification-widget/src/notification')(router, '/api/v1/notifications')
+const notificationModule = require('@acpaas-ui-widgets/nodejs-notification-widget/src/notification');
+
+notificationModule(router, '/api/v1/notifications')
 app.use('', router);
-...
+
 app.listen(3000);
 ```
 
@@ -39,13 +40,10 @@ Create a .env file containing:
 ```sh
 PORT=3002
 API_KEY=<client id>
-MPROFILE_API_PROD='https://api-gw-a.antwerpen.be/astad/mprofiel/v1'
 NOTIFICATON_API='https://api-gw-a.antwerpen.be/acpaas/in-app-notification/v2/'
-JWT_ENCRYPTION_VALIDATE=<same as main application>
-JWT_ENCRYPTION_SECRET=<same as main application>
 ```
 
-(Remove the -o extension in the URL's to use the production api.)
+(Remove the -a extension in the URL's to use the production api.)
 
 Run the service:
 
@@ -54,7 +52,7 @@ Run the service:
 > npm start
 ```
 
-Test by using the postman collection to call the api
+
 
 Run the test suite:
 ```sh
@@ -64,9 +62,8 @@ Run the test suite:
 
 ## Service Specification
 
-The service implements the following protocol:
-
-//TODO
+Specifications described in the [postman collection](Notification%20Widget%20NodeJS.postman_collection.json).
+Use the collection to call the demo api.
 
 ## Contributing
 
