@@ -2,6 +2,7 @@ let express = require('express');
 let logger = require('morgan');
 let bodyParser = require('body-parser');
 let dotenv = require('dotenv').config()
+const notificationModule = require('../src/notification');
 
 let app = express();
 const router = express.Router();
@@ -19,9 +20,13 @@ app.use(function (req, res, next) {
 
 
 // api endpoints
-require('../src/notification')(router, '/api/v1/notifications')
+notificationModule(router, '/api/v1/notifications')
 
 app.use('', router);
+
+app.get('/status', (req, res) => {
+    res.send({status:'ok'});
+});
 
 app.set('port', process.env.PORT);
 

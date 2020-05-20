@@ -15,8 +15,8 @@ let controller;
 
 describe("notificationController", function () {
     beforeEach(() => {
-        controller = proxyquire('../src/notification/notificationController', {
-            './notificationService': notificationServiceStub
+        controller = proxyquire('../src/notification/notification.controller', {
+            './notification.service': notificationServiceStub
         });
     });
 

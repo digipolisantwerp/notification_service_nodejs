@@ -1,4 +1,4 @@
-const notificationService = require('./notificationService');
+const notificationService = require('./notification.service');
 
 
 /**
@@ -20,8 +20,9 @@ exports.get_all_in_app_messages = (req, res) => {
  * */
 exports.get_all_in_app_messages_unread_count = (req, res) => {
     let auth = req.query.auth;
+    let queryParams = req.query;
 
-    notificationService.get_all_in_app_messages_unread_count(auth).then((response) => {
+    notificationService.get_all_in_app_messages_unread_count(auth, queryParams).then((response) => {
         res.json(response);
     }).catch((err) => {
         handle_error(err, res);

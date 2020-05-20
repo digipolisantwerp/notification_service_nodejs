@@ -1,4 +1,4 @@
-let notificationController = require('./notificationController');
+let notificationController = require('./notification.controller');
 
 module.exports = function (router, prefix) {
     /**
