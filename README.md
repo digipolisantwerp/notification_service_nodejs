@@ -1,3 +1,5 @@
+![Node.js CI](https://github.com/digitalrmdy/notification_service_nodejs/workflows/Node.js%20CI/badge.svg?branch=master)
+
 # Notification Widget UI BFF (NodeJS)
 
 This is a Node.js backend service library to create a BFF service for the Notification Widget. The widget provides a notification. This service is matched by a [corresponding UI](https://github.com/digitalrmdy/notification_widget_angular).
