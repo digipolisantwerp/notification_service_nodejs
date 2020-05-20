@@ -1,63 +1,6 @@
 const notificationService = require('./notification.service');
 
-
-/**
- * Get all in app messages
- * */
-exports.get_all_in_app_messages = (req, res) => {
-    let auth = req.query.auth;
-    let queryParams = req.query;
-
-    notificationService.get_all_in_app_messages(auth, queryParams).then((response) => {
-        res.json(response);
-    }).catch((err) => {
-        handle_error(err, res);
-    });
-};
-
-/**
- * Get a count of all in app messages
- * */
-exports.get_all_in_app_messages_unread_count = (req, res) => {
-    let auth = req.query.auth;
-    let queryParams = req.query;
-
-    notificationService.get_all_in_app_messages_unread_count(auth, queryParams).then((response) => {
-        res.json(response);
-    }).catch((err) => {
-        handle_error(err, res);
-    });
-};
-
-/**
- * set message status
- * */
-exports.set_in_app_message_status = (req, res) => {
-    let auth = req.query.auth;
-    let messageId = req.params.messageId;
-    notificationService.set_in_app_message_status(auth, messageId, req.body).then((response) => {
-        res.json(response);
-    }).catch((err) => {
-        handle_error(err, res);
-    });
-};
-
-
-/**
- * delete an in app message
- * */
-exports.delete_in_app_message = (req, res) => {
-    let auth = req.query.auth;
-    let messageId = req.params.messageId;
-    notificationService.delete_in_app_message(auth, messageId).then((response) => {
-        res.json(response);
-    }).catch((err) => {
-        handle_error(err, res);
-    });
-};
-
-
-function handle_error(err, res) {
+function handleError(err, res) {
     if (err.status_code) {
         res.status(err.status_code);
     } else {
@@ -66,3 +9,59 @@ function handle_error(err, res) {
 
     res.json(err);
 }
+
+
+/**
+ * Get all in app messages
+ * */
+exports.getAllInAppMessages = (req, res) => {
+    const { auth } = req.query;
+    const queryParams = req.query;
+
+    notificationService.getAllInAppMessages(auth, queryParams).then((response) => {
+        res.json(response);
+    }).catch((err) => {
+        handleError(err, res);
+    });
+};
+
+/**
+ * Get a count of all in app messages
+ * */
+exports.getAllInAppMessagesUnreadCount = (req, res) => {
+    const { auth } = req.query;
+    const queryParams = req.query;
+
+    notificationService.getAllInAppMessagesUnreadCount(auth, queryParams).then((response) => {
+        res.json(response);
+    }).catch((err) => {
+        handleError(err, res);
+    });
+};
+
+/**
+ * set message status
+ * */
+exports.setInAppMessageStatus = (req, res) => {
+    const { auth } = req.query;
+    const { messageId } = req.params;
+    notificationService.setInAppMessageStatus(auth, messageId, req.body).then((response) => {
+        res.json(response);
+    }).catch((err) => {
+        handleError(err, res);
+    });
+};
+
+
+/**
+ * delete an in app message
+ * */
+exports.deleteInAppMessage = (req, res) => {
+    const { auth } = req.query;
+    const { messageId } = req.params;
+    notificationService.deleteInAppMessage(auth, messageId).then((response) => {
+        res.json(response);
+    }).catch((err) => {
+        handleError(err, res);
+    });
+};

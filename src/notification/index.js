@@ -1,21 +1,22 @@
-let notificationController = require('./notification.controller');
+const notificationController = require('./notification.controller');
 
-module.exports = function (router, prefix) {
+function notificationModule(router, prefix) {
     /**
      * GET requests
      */
-    router.get(`${prefix}/`, notificationController.get_all_in_app_messages);
-    router.get(`${prefix}/overview`, notificationController.get_all_in_app_messages_unread_count);
+    router.get(`${prefix}/`, notificationController.getAllInAppMessages);
+    router.get(`${prefix}/overview`, notificationController.getAllInAppMessagesUnreadCount);
 
     /**
      * PATCH requests
      */
-    router.patch(`${prefix}/:messageId`, notificationController.set_in_app_message_status);
+    router.patch(`${prefix}/:messageId`, notificationController.setInAppMessageStatus);
 
 
     /**
      * Delete requests
      */
-    router.delete(`${prefix}/:messageId`, notificationController.delete_in_app_message);
+    router.delete(`${prefix}/:messageId`, notificationController.deleteInAppMessage);
 }
 
+module.exports = notificationModule;

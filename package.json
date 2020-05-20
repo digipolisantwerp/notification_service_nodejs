@@ -6,6 +6,7 @@
   "scripts": {
     "start": "nodemon ./bin/www",
     "debug": "nodemon ./bin/www --inspect",
+    "lint": "eslint .",
     "test": "nyc --reporter=html npm run test:jasmine",
     "test:jasmine": "jasmine --config=test/jasmine.json"
   },
@@ -22,7 +23,12 @@
     "request": "^2.87.0"
   },
   "devDependencies": {
+    "babel-eslint": "^10.1.0",
     "body-parser": "^1.18.3",
+    "eslint": "^6.0.0",
+    "eslint-config-airbnb-base": "^14.1.0",
+    "eslint-plugin-import": "^2.20.2",
+    "eslint-plugin-jasmine": "^4.1.1",
     "jasmine": "^3.5.0",
     "morgan": "^1.9.0",
     "nodemon": "^2.0.2",
