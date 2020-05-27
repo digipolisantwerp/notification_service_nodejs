@@ -27,9 +27,8 @@ Before contributing code, you should be aware of the following:
 
 ### Code layout
 
-- `./projects/notification-widget` contains the widget source
+- `./src` contains the widget source
 - `./example` contains the demo app
-- `./example-api` contains the nodejs demo api
 
 ### Building and Testing
 
@@ -80,8 +79,3 @@ You must be a member of the @acpaas-ui-widgets organization on GitHub.
     ```
 
 3. Publish the package
-
-    ```sh
-    > npm run build
-    > npm publish dist
-    ```

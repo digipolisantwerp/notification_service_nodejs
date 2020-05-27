@@ -22,7 +22,29 @@ app.use((req, res, next) => {
 
 
 // api endpoints
-notificationModule(router, '/api/v1/notifications');
+const notificationController = notificationModule.notificationController({
+    API_KEY: process.env.API_KEY,
+    NOTIFICATION_API: process.env.NOTIFICATION_API,
+});
+
+
+/**
+ * GET requests
+ */
+router.get('/', notificationController.getAllInAppMessages);
+router.get('/overview', notificationController.getAllInAppMessagesUnreadCount);
+
+/**
+ * PATCH requests
+ */
+router.patch('/:messageId', notificationController.setInAppMessageStatus);
+
+
+/**
+ * Delete requests
+ */
+router.delete('/:messageId', notificationController.deleteInAppMessage);
+
 
 app.use('', router);
 

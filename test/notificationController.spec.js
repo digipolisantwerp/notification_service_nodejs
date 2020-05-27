@@ -1,28 +1,35 @@
 const proxyquire = require('proxyquire').noCallThru();
 const sinon = require('sinon');
 
-const notificationServiceStub = {
+/* eslint-disable */
+class notificationServiceStub {
     getAllInAppMessages() {
-    },
+    }
+
     getAllInAppMessagesUnreadCount() {
-    },
+    }
+
     setInAppMessageStatus() {
-    },
+    }
+
     deleteInAppMessage() {
-    },
-};
+    }
+}
+
+/* eslint-enable */
 let controller;
 
 describe('notificationController', () => {
     beforeEach(() => {
-        controller = proxyquire('../src/notification/notification.controller', {
+        const notificationController = proxyquire('../src/notification/notification.controller', {
             './notification.service': notificationServiceStub,
         });
+        controller = notificationController.notificationController({});
     });
 
     describe('Success calls', () => {
         it('should call for all the messages and output the result', (done) => {
-            const stub = sinon.stub(notificationServiceStub, 'getAllInAppMessages').resolves('ok');
+            const stub = sinon.stub(notificationServiceStub.prototype, 'getAllInAppMessages').resolves('ok');
             controller.getAllInAppMessages({ query: { auth: 'response auth' } }, {
                 json: (response) => {
                     expect(response).toEqual('ok');
@@ -33,7 +40,7 @@ describe('notificationController', () => {
         });
 
         it('should call for all the messages and output the result', (done) => {
-            const stub = sinon.stub(notificationServiceStub, 'getAllInAppMessagesUnreadCount').resolves(5);
+            const stub = sinon.stub(notificationServiceStub.prototype, 'getAllInAppMessagesUnreadCount').resolves(5);
             controller.getAllInAppMessagesUnreadCount({ query: { auth: 'response auth' } }, {
                 json: (response) => {
                     expect(response).toEqual(5);
@@ -44,7 +51,7 @@ describe('notificationController', () => {
         });
 
         it('should call to set the in app message status and output the result', (done) => {
-            const stub = sinon.stub(notificationServiceStub, 'setInAppMessageStatus').resolves(5);
+            const stub = sinon.stub(notificationServiceStub.prototype, 'setInAppMessageStatus').resolves(5);
             controller.setInAppMessageStatus({ query: { auth: 'response auth' }, params: { messageId: 1 } }, {
                 json: (response) => {
                     expect(response).toEqual(5);
@@ -55,7 +62,7 @@ describe('notificationController', () => {
         });
 
         it('should call to delete an in app message status and output the result', (done) => {
-            const stub = sinon.stub(notificationServiceStub, 'deleteInAppMessage').resolves(5);
+            const stub = sinon.stub(notificationServiceStub.prototype, 'deleteInAppMessage').resolves(5);
             controller.deleteInAppMessage({ query: { auth: 'response auth' }, params: { messageId: 1 } }, {
                 json: (response) => {
                     expect(response).toEqual(5);
@@ -68,7 +75,7 @@ describe('notificationController', () => {
 
     describe('failed calls', () => {
         it('should call for all the messages and output the error when thrown', (done) => {
-            const stub = sinon.stub(notificationServiceStub, 'getAllInAppMessages').rejects(500);
+            const stub = sinon.stub(notificationServiceStub.prototype, 'getAllInAppMessages').rejects(500);
             controller.getAllInAppMessages({ query: { auth: 'response auth' } }, {
                 json: (response) => {
                     expect(response).toEqual(500);
@@ -81,7 +88,7 @@ describe('notificationController', () => {
         });
 
         it('should call for all the messages and output the error when thrown', (done) => {
-            const stub = sinon.stub(notificationServiceStub, 'getAllInAppMessagesUnreadCount').rejects({ status_code: 401 });
+            const stub = sinon.stub(notificationServiceStub.prototype, 'getAllInAppMessagesUnreadCount').rejects({ status_code: 401 });
             controller.getAllInAppMessagesUnreadCount({ query: { auth: 'response auth' } }, {
                 json: (response) => {
                     expect(response).toEqual({ status_code: 401 });
@@ -94,7 +101,7 @@ describe('notificationController', () => {
         });
 
         it('should call to set the in app message status and output the error when thrown', (done) => {
-            const stub = sinon.stub(notificationServiceStub, 'setInAppMessageStatus').rejects(500);
+            const stub = sinon.stub(notificationServiceStub.prototype, 'setInAppMessageStatus').rejects(500);
             controller.setInAppMessageStatus({ query: { auth: 'response auth' }, params: { messageId: 1 } }, {
                 json: (response) => {
                     expect(response).toEqual(500);
@@ -107,7 +114,7 @@ describe('notificationController', () => {
         });
 
         it('should call to delete an in app message status and output the error when thrown', (done) => {
-            const stub = sinon.stub(notificationServiceStub, 'deleteInAppMessage').rejects(500);
+            const stub = sinon.stub(notificationServiceStub.prototype, 'deleteInAppMessage').rejects(500);
             controller.deleteInAppMessage({ query: { auth: 'response auth' }, params: { messageId: 1 } }, {
                 json: (response) => {
                     expect(response).toEqual(500);

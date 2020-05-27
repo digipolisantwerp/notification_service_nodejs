@@ -25,24 +25,20 @@
 		{
 			"name": "Notifications unread Count",
 			"request": {
+				"auth": {
+					"type": "noauth"
+				},
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "{{url}}/api/v1/notifications/overview?auth={{authToken}}&userId={{userId}}",
+					"raw": "{{url}}/overview?userId={{userId}}",
 					"host": [
 						"{{url}}"
 					],
 					"path": [
-						"api",
-						"v1",
-						"notifications",
 						"overview"
 					],
 					"query": [
-						{
-							"key": "auth",
-							"value": "{{authToken}}"
-						},
 						{
 							"key": "userId",
 							"value": "{{userId}}"
@@ -55,17 +51,18 @@
 		{
 			"name": "Notifications List",
 			"request": {
+				"auth": {
+					"type": "noauth"
+				},
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "{{url}}/api/v1/notifications?sort=-createdAt&page=1&auth={{authToken}}&userId={{userId}}",
+					"raw": "{{url}}/?sort=-createdAt&page=1&userId={{userId}}",
 					"host": [
 						"{{url}}"
 					],
 					"path": [
-						"api",
-						"v1",
-						"notifications"
+						""
 					],
 					"query": [
 						{
@@ -75,10 +72,6 @@
 						{
 							"key": "page",
 							"value": "1"
-						},
-						{
-							"key": "auth",
-							"value": "{{authToken}}"
 						},
 						{
 							"key": "userId",
@@ -92,6 +85,9 @@
 		{
 			"name": "Notification - Mark as read",
 			"request": {
+				"auth": {
+					"type": "noauth"
+				},
 				"method": "PATCH",
 				"header": [],
 				"body": {
@@ -104,21 +100,12 @@
 					}
 				},
 				"url": {
-					"raw": "{{url}}/api/v1/notifications/5ea1182cb6f9b100218dc1d2?auth={{authToken}}",
+					"raw": "{{url}}/5ea1182cb6f9b100218dc1d2",
 					"host": [
 						"{{url}}"
 					],
 					"path": [
-						"api",
-						"v1",
-						"notifications",
 						"5ea1182cb6f9b100218dc1d2"
-					],
-					"query": [
-						{
-							"key": "auth",
-							"value": "{{authToken}}"
-						}
 					]
 				}
 			},
@@ -139,21 +126,12 @@
 					}
 				},
 				"url": {
-					"raw": "{{url}}/api/v1/notifications/5ea1182cb6f9b100218dc1d2?auth={{authToken}}",
+					"raw": "{{url}}/5ea1182cb6f9b100218dc1d2",
 					"host": [
 						"{{url}}"
 					],
 					"path": [
-						"api",
-						"v1",
-						"notifications",
 						"5ea1182cb6f9b100218dc1d2"
-					],
-					"query": [
-						{
-							"key": "auth",
-							"value": "{{authToken}}"
-						}
 					]
 				}
 			},
@@ -165,21 +143,12 @@
 				"method": "DELETE",
 				"header": [],
 				"url": {
-					"raw": "{{url}}/api/v1/notifications/5e9ee8bf958d2c02c69a45fb?auth={{authToken}}",
+					"raw": "{{url}}/5e9ee8ea958d2c02c69a460a",
 					"host": [
 						"{{url}}"
 					],
 					"path": [
-						"api",
-						"v1",
-						"notifications",
-						"5e9ee8bf958d2c02c69a45fb"
-					],
-					"query": [
-						{
-							"key": "auth",
-							"value": "{{authToken}}"
-						}
+						"5e9ee8ea958d2c02c69a460a"
 					]
 				}
 			},
@@ -210,26 +179,15 @@
 	],
 	"variable": [
 		{
-			"id": "43ae0d94-0683-4812-8448-bde9240ac497",
-			"key": "authToken",
-			"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE1ODk5ODM1ODcsImFEYXRhIjoiYTUwNDk3MjQ3Y2RjZTU1NWIyOTQ4OGUxNTg3NDdiNTBmNjc0ZmRmZGMwNTdkZGU2MDk5ZmU0ODk2NjMyYTNjNmQ2MzA4ZGUzYjVjOTczNzFmZThiNWQ3MWExZDFiNWVhIiwickRhdGEiOiJiYWQwYzY3OTg3YzY2MmQ4MmNlMjA3NjJlYWM0NGE5ODI3ODZhNjBjYWJiNTc2M2ZjMTZhMDZjN2ZkM2RhYWQyODNhZDIzMWYwOTYyZmMxZTI2ZTlhZWY3NzU1OTRlZDUiLCJpZCI6Ijc4NThjMGM1LThlOWMtNGM2Yi1iOTIwLTQyYTdlMDMxZDM3OSIsIm5hbWUiOiJFWDAzNDgxIiwiZ2l2ZW5uYW1lIjoiTWljaGllbCIsInN1cm5hbWUiOiJHZWxseW5jayIsImZ1bGxuYW1lIjoiTWljaGllbCBHZWxseW5jayIsImlhdCI6MTU4OTk3NjM4N30.gfzpuBntwiquRkpmka9igYtRviYaLFd-4LMn5iWUw1U",
-			"type": "string"
-		},
-		{
-			"id": "973b8186-07b1-49f9-adf6-58b2b2ba57e7",
+			"id": "8ce921ce-3bef-4ded-9413-835035f2693a",
 			"key": "userId",
 			"value": "7858c0c5-8e9c-4c6b-b920-42a7e031d379",
 			"type": "string"
 		},
 		{
-			"id": "37ff6148-371e-48e3-8acd-b2cd39b9b474",
+			"id": "dc9d45e9-0930-4a49-8e69-316c103c077f",
 			"key": "url",
 			"value": "http://localhost:3002",
-			"type": "string"
-		},
-		{
-			"id": "4c9a7f37-4b36-4b9e-b00f-8cc3856265fe",
-			"value": "",
 			"type": "string"
 		}
 	],

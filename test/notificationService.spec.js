@@ -1,6 +1,8 @@
 const sinon = require('sinon');
 const axios = require('axios');
-const service = require('../src/notification/notification.service');
+const Notificationservice = require('../src/notification/notification.service');
+
+const service = new Notificationservice({ API_KEY: '1234', NOTIFICATION_API: 'http://testurl/' });
 
 
 let axiosGetSpy;

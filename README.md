@@ -25,9 +25,37 @@ Express example:
 const express = require('express');
 const app = express()
 const router = express.Router();
+
+/**
+ * Import the notificaiton module
+ */
 const notificationModule = require('@acpaas-ui-widgets/nodejs-notification-widget/src/notification');
 
-notificationModule(router, '/api/v1/notifications')
+/**
+ * Create the notificaiton controller.
+ */
+const notificationController = notificationModule.notificationController({API_KEY:process.env.API_KEY, NOTIFICATION_API: process.env.NOTIFICATION_API});
+
+/**
+ * Add the GET requests
+ */
+router.get(`/`, notificationController.getAllInAppMessages);
+router.get(`/overview`, notificationController.getAllInAppMessagesUnreadCount);
+
+/**
+ * Add the PATCH requests
+ */
+router.patch(`/:messageId`, notificationController.setInAppMessageStatus);
+
+
+/**
+ * Add the Delete requests
+ */
+router.delete(`/:messageId`, notificationController.deleteInAppMessage);
+
+
+
+
 app.use('', router);
 
 app.listen(3000);
