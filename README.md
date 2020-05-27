@@ -33,6 +33,7 @@ const notificationModule = require('@acpaas-ui-widgets/nodejs-notification-widge
 
 /**
  * Create the notification controller.
+ * Get an API key from de API Store
  */
 const notificationController = notificationModule.notificationController({API_KEY:process.env.API_KEY, NOTIFICATION_API: process.env.NOTIFICATION_API});
 
@@ -104,5 +105,3 @@ Please see our [contribution guide](CONTRIBUTING.md).
 ## License
 
 This project is published under the [MIT license](LICENSE.md).
-
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 7.3.10.
