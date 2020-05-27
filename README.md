@@ -27,12 +27,12 @@ const app = express()
 const router = express.Router();
 
 /**
- * Import the notificaiton module
+ * Import the notification module
  */
 const notificationModule = require('@acpaas-ui-widgets/nodejs-notification-widget/src/notification');
 
 /**
- * Create the notificaiton controller.
+ * Create the notification controller.
  */
 const notificationController = notificationModule.notificationController({API_KEY:process.env.API_KEY, NOTIFICATION_API: process.env.NOTIFICATION_API});
 
