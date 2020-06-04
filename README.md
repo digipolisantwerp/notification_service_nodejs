@@ -17,7 +17,43 @@ Then install (you will need to be on the digipolis network):
 > npm install @acpaas-ui-widgets/nodejs-notification-widget
 ```
 
-### Using
+### Using in Express
+### By loading the router
+
+
+```js
+const express = require('express');
+const app = express()
+const router = express.Router();
+
+/**
+ * Import the notification module
+ */
+const notificationModule = require('@acpaas-ui-widgets/nodejs-notification-widget/src/notification');
+
+/**
+ * Create the notification router.
+ * Get an API key from de API Store
+ */
+const notificationRouter = notificationModule.notificationRouter({
+  API_KEY: process.env.API_KEY,
+  NOTIFICATION_API: process.env.NOTIFICATION_API,
+});
+
+/**
+ * Use the router
+ */
+router.use('/api/v1/notifications', notificationRouter);
+
+
+
+app.use('', router);
+
+app.listen(3000);
+```
+
+
+#### By loading the controller
 
 Express example:
 
