@@ -1,5 +1,6 @@
-let express = require('express');
-let router = express.Router();
+const express = require('express');
+
+const router = express.Router();
 const notificationController = require('./notification.controller');
 
 exports.notificationRouter = (config) => {
@@ -24,4 +25,4 @@ exports.notificationRouter = (config) => {
     router.delete('/:messageId', notification.deleteInAppMessage);
 
     return router;
-}
+};
