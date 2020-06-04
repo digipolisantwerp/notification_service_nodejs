@@ -18,7 +18,7 @@ Then install (you will need to be on the digipolis network):
 ```
 
 ### Using in Express
-### By loading the router
+#### By loading the router
 
 
 ```js
@@ -54,8 +54,6 @@ app.listen(3000);
 
 
 #### By loading the controller
-
-Express example:
 
 ```js
 const express = require('express');
