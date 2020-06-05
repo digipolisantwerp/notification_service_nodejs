@@ -7,7 +7,6 @@ const notificationModule = require('../src/notification');
 /* eslint-enable */
 
 const app = express();
-const router = express.Router();
 
 app.use(logger('dev'));
 app.use(bodyParser.json());
@@ -20,31 +19,11 @@ app.use((req, res, next) => {
     next();
 });
 
-
 // api endpoints
-const notificationController = notificationModule.notificationController({
+const router = notificationModule.notificationRouter({
     API_KEY: process.env.API_KEY,
     NOTIFICATION_API: process.env.NOTIFICATION_API,
 });
-
-
-/**
- * GET requests
- */
-router.get('/', notificationController.getAllInAppMessages);
-router.get('/overview', notificationController.getAllInAppMessagesUnreadCount);
-
-/**
- * PATCH requests
- */
-router.patch('/:messageId', notificationController.setInAppMessageStatus);
-
-
-/**
- * Delete requests
- */
-router.delete('/:messageId', notificationController.deleteInAppMessage);
-
 
 app.use('', router);
 
@@ -52,8 +31,8 @@ app.get('/status', (req, res) => {
     res.send({ status: 'ok' });
 });
 
-app.set('port', process.env.PORT);
+const port = process.env.PORT || 3000;
 
-console.log('nodestartup on port', process.env.PORT); // eslint-disable-line
+app.listen(port, () => console.log(`Example API listening on port ${port}!`)); // eslint-disable-line
 
 module.exports = app;

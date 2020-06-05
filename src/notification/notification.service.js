@@ -1,10 +1,10 @@
 const axios = require('axios');
 
-module.exports = class NotificationService {
+class NotificationService {
     constructor(config) {
         this.config = config;
+        this.baseUrl = `${this.config.NOTIFICATION_API}`.replace(/\/$/, '');
     }
-
 
     /**
      * Helper function for handling responses
@@ -26,7 +26,6 @@ module.exports = class NotificationService {
         };
     }
 
-
     /**
      * Get all in app messages
      * @param queryParams optional
@@ -43,7 +42,7 @@ module.exports = class NotificationService {
             delete sentQueryParams.userId;
             const params = Object.keys(sentQueryParams).map((key) => `${encodeURIComponent(key)}=${encodeURIComponent(sentQueryParams[key])}`).join('&');
 
-            axios.get(`${this.config.NOTIFICATION_API}inboxes/${userId}/messages?${params}`, requestOptions).then((response) => {
+            axios.get(`${this.baseUrl}/inboxes/${userId}/messages?${params}`, requestOptions).then((response) => {
                 if (response.status === 200) {
                     const objectToReturn = {
                         messages: response.data._embedded.messages,
@@ -70,7 +69,7 @@ module.exports = class NotificationService {
                     ApiKey: this.config.API_KEY,
                 },
             };
-            axios.get(`${this.config.NOTIFICATION_API}inboxes/${queryParams.userId}`, requestOptions).then((response) => {
+            axios.get(`${this.baseUrl}/inboxes/${queryParams.userId}`, requestOptions).then((response) => {
                 if (response.status === 200) {
                     resolve(NotificationService
                         .handleResponse(response.status, response.data.unread));
@@ -95,7 +94,7 @@ module.exports = class NotificationService {
                     ApiKey: this.config.API_KEY,
                 },
             };
-            axios.patch(`${this.config.NOTIFICATION_API}messages/${id}`, body, requestOptions).then((response) => {
+            axios.patch(`${this.baseUrl}/messages/${id}`, body, requestOptions).then((response) => {
                 if (response.status === 200) {
                     resolve(NotificationService.handleResponse(response.status, response.data));
                 } else {
@@ -106,7 +105,6 @@ module.exports = class NotificationService {
             });
         });
     }
-
 
     /**
      * delete an in app message
@@ -119,7 +117,7 @@ module.exports = class NotificationService {
                     ApiKey: this.config.API_KEY,
                 },
             };
-            axios.delete(`${this.config.NOTIFICATION_API}messages/${id}`, requestOptions).then((response) => {
+            axios.delete(`${this.baseUrl}/messages/${id}`, requestOptions).then((response) => {
                 if (response.status === 200) {
                     resolve(NotificationService.handleResponse(response.status));
                 } else {
@@ -130,4 +128,6 @@ module.exports = class NotificationService {
             });
         });
     }
-};
+}
+
+module.exports = NotificationService;
