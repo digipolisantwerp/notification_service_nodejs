@@ -1,7 +1,11 @@
 {
-  "name": "@acpaas-ui-widgets/nodejs-notification-widget",
-  "version": "0.0.1",
+  "name": "@acpaas-ui-widgets/nodejs-notification",
+  "version": "1.0.0",
   "description": "Notification Widget BFF package (Node)",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/digipolisantwerp/notification_service_nodejs.git"
+  },
   "scripts": {
     "start": "nodemon ./bin/www",
     "debug": "nodemon ./bin/www --inspect",
@@ -9,6 +13,7 @@
     "test": "nyc --reporter=html npm run test:jasmine",
     "test:jasmine": "jasmine --config=test/jasmine.json"
   },
+  "main": "src/notification/index.js",
   "author": {
     "name": "Michiel Gellynck",
     "email": "michiel.gellynck@digipolis.be"

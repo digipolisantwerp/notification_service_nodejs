@@ -14,7 +14,7 @@ There is a **demo service**, see below for instructions on running it.
 Then install (you will need to be on the digipolis network):
 
 ```sh
-> npm install @acpaas-ui-widgets/nodejs-notification-widget
+> npm install @acpaas-ui-widgets/nodejs-notification
 ```
 
 ### Using in Express
